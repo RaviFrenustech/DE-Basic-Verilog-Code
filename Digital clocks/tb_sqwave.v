@@ -1,10 +1,12 @@
 `include "SquareWave.v"
 module tb_sqwave;
-input clk_out;
-output  reg clk, rst;
-output reg [3:0] rise, fall;
+wire clk_out;
+reg clk; 
+reg rst;
+reg [3:0] rise; 
+reg [3:0] fall;
 sqwaveGen U1 (.clk(clk), .rst(rst), .rise(rise), .fall(fall), .clk_out(clk_out));
-initial 
+initial
 begin
 clk=1'b0;
 repeat (10000) clk = ~clk;
@@ -17,9 +19,9 @@ begin
         #2000 rise = 4'b0101;
         #10000 $finish;
 end
-begin
-    $dumpfile("sqwave.vcd");
-    $dumpvars(0, sqwave);
 end
+begin
+    $dumpfile("tb_sqwave.vcd");
+    $dumpvars(0,tb_sqwave); 
 end
 endmodule
