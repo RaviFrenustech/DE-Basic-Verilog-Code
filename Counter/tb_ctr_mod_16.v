@@ -2,7 +2,7 @@
 module tb_ctr_mode_16;
 
 reg clk, rst_n;
-wire [5:0] count; 
+wire [3:0] count; 
 initial
 $monitor ("Count = %4b", count);
 
