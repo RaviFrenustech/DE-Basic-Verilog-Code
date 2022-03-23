@@ -1,4 +1,4 @@
-module and_or_prog_delay 
+module decoder 
 (
     output reg [0:7] D,
     input [1:0] A,B,C,enable

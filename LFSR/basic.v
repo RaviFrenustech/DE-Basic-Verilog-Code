@@ -1,14 +1,5 @@
 `timescale 1ns/100ps
-module led_hello_world (input clk, set, rst, d, output reg q);
- 
-always @ (posedge clk or posedge rst or posedge set) 
-    if(set)
-        q <= 1'b1;
-    else if (rst)
-        q <= 1'b0;
-    else
-        q <= d; 
-endmodule
+`include "led_hello_world.v"
 
 module struct_lfsr #(parameter [3:0] seed = 4'b0) (input clk, init, sin, output sout);
 
