@@ -1,0 +1,40 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 10;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_011236E0 .scope module, "xor3_mtm" "xor3_mtm" 2 2;
+ .timescale -9 -10;
+L_0112EF40/d .functor NOT 1, C4<z>, C4<0>, C4<0>, C4<0>;
+L_0112EF40 .delay (30,40,30) L_0112EF40/d;
+L_0112EFA8/d .functor NOT 1, C4<z>, C4<0>, C4<0>, C4<0>;
+L_0112EFA8 .delay (30,40,30) L_0112EFA8/d;
+L_011258A0/d .functor NOT 1, C4<z>, C4<0>, C4<0>, C4<0>;
+L_011258A0 .delay (30,40,30) L_011258A0/d;
+L_01125938/d .functor NAND 1, L_0112EF40, L_0112EFA8, C4<z>, C4<1>;
+L_01125938 .delay (40,50,40) L_01125938/d;
+L_00FA14B8/d .functor NAND 1, L_0112EF40, C4<z>, L_011258A0, C4<1>;
+L_00FA14B8 .delay (40,50,40) L_00FA14B8/d;
+L_00FA15C0/d .functor NAND 1, C4<z>, L_0112EFA8, L_011258A0, C4<1>;
+L_00FA15C0 .delay (40,50,40) L_00FA15C0/d;
+L_00FA1A98/d .functor NAND 1, C4<z>, C4<z>, C4<z>, C4<1>;
+L_00FA1A98 .delay (40,50,40) L_00FA1A98/d;
+L_00FA1B30/d .functor NAND 1, L_01125938, L_00FA14B8, L_00FA15C0, L_00FA1A98;
+L_00FA1B30 .delay (40,50,40) L_00FA1B30/d;
+v011257E8_0 .net "a", 0 0, C4<z>; 0 drivers
+v00FA10B8_0 .net "a_", 0 0, L_0112EF40; 1 drivers
+v00FA0F00_0 .net "b", 0 0, C4<z>; 0 drivers
+v00FA12C8_0 .net "b_", 0 0, L_0112EFA8; 1 drivers
+v00FA0C98_0 .net "c", 0 0, C4<z>; 0 drivers
+v00FA0E50_0 .net "c_", 0 0, L_011258A0; 1 drivers
+v00FA1378_0 .net "im1", 0 0, L_01125938; 1 drivers
+v00FA0DA0_0 .net "im2", 0 0, L_00FA14B8; 1 drivers
+v00FA0CF0_0 .net "im3", 0 0, L_00FA15C0; 1 drivers
+v00FA0C40_0 .net "im4", 0 0, L_00FA1A98; 1 drivers
+v00FA0DF8_0 .net "y", 0 0, L_00FA1B30; 1 drivers
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "BCD_Counter.v";
