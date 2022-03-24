@@ -1,10 +1,17 @@
-`timescale 1ns/100ps
-`include "led_hello_world.v"
+module LFSR (clk,rst,y);
+input clk,rst;
+output reg [3:0] y;
+ 
+wire feedback;
+assign feedback =(y[1]^y[0]);
 
-module struct_lfsr #(parameter [3:0] seed = 4'b0) (input clk, init, sin, output sout);
+always @(posedge clk, negedge rst ) 
+begin
+        if(rst)
+            y = 4'b0001;
+        else
+            y = {feedback,y[3:1]};
+    
+end
 
-    wire im1, im2, im3, im4, im5;
-    led_hello_world ff[3:0] (clk, {4{init}}&seed, {4{init}}&~seed, {im1, im2, im4, im5}, {im2, im3, im5, sout});
-    xor (im1, sin, sout);
-    xor (im4, im3, sout);
 endmodule
